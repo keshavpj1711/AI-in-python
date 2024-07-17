@@ -22,7 +22,9 @@ class TreeNode:
     return level
 
   def print_tree(self):
-    print(self.data)
+    spaces = " "*self.get_level()*3
+    prefix = spaces + "|__" if self.parent else "" # This is basically how we use ternary operator in python
+    print(prefix + self.data)
     if self.children:
       for child in self.children:
         child.print_tree()
@@ -57,4 +59,3 @@ def build_product_tree():
 if __name__ == "__main__":
   root = build_product_tree()
   root.print_tree()
-  
