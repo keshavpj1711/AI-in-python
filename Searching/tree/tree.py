@@ -8,6 +8,25 @@ class TreeNode:
     child.parent = self
     self.children.append(child)
 
+  def get_level(self):
+    # Now level is simply the number of ancestors a node has
+    level = 0 
+    
+    # What we are doing is if there is parent present we inc level by one 
+    # and setting p to the parent itself then for that parent we see if any other parent is present
+    p = self.parent
+    while p:
+      level += 1
+      p = p.parent
+
+    return level
+
+  def print_tree(self):
+    print(self.data)
+    if self.children:
+      for child in self.children:
+        child.print_tree()
+
 
 def build_product_tree():
   root = TreeNode(data="Electronics")
@@ -37,4 +56,5 @@ def build_product_tree():
 
 if __name__ == "__main__":
   root = build_product_tree()
-  pass
+  root.print_tree()
+  
