@@ -67,6 +67,25 @@ class BinarySearchTreeNode:
 
     return elements
 
+  def post_order_traversal(self):
+    elements = []
+
+    # Logic of post_order_traversal
+    # left > right > base node is the pattern that is followed with post order trv
+
+    # visiting left node
+    if self.left:
+      elements += self.left.post_order_traversal()
+    
+    # visiting right node
+    if self.right:
+      elements += self.right.post_order_traversal()
+
+    # visiting base node
+    elements.append(self.data)
+
+    return elements
+
   def search(self, val):
     if val == self.data:
       return True
@@ -140,8 +159,8 @@ if __name__=="__main__":
   print("Pre Order Tranversal: ")
   print(num_tree.pre_order_traversal())
 
-  # print("Post Order Tranversal: ")
-  # print(num_tree.in_order_traversal())
+  print("Post Order Tranversal: ")
+  print(num_tree.post_order_traversal())
 
   # Getting search functionalities
   # search_input = int(input("Enter a number to search: "))
