@@ -68,13 +68,26 @@ class BinarySearchTreeNode:
 
   def find_min(self):
     min_element = None
+    # Checking if self.left is empty or not
     if self.left:
+      # If it's not recursively calling find_min() on that node
+      # This recursion is basically returning the min_value all the way from the last call of find_min()
       min_element = self.left.find_min()
     else:
+      # If there's no further left division add data to min_element
       min_element = self.data
 
     return min_element
     
+  def find_max(self):
+    max_element = None
+    if self.right:
+      max_element = self.right.find_max()
+    else:
+      max_element = self.data
+
+    return max_element
+
 # A function which takes a list and builds a tree out of it
 def build_tree(elements):
   root = BinarySearchTreeNode(elements[0])
@@ -97,3 +110,5 @@ if __name__=="__main__":
 
   # finding minimum
   print(f"Minimum element in num_tree is: {num_tree.find_min()}")
+  # finding maximum
+  print(f"Maximum element in num_tree is: {num_tree.find_max()}")
