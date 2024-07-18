@@ -2,3 +2,6 @@ Before going over DFS, BFS, or any other search algorithms we must first get to 
 
 # Trees
 
+## General Tree 
+
+## Binary Tree
