@@ -88,6 +88,18 @@ class BinarySearchTreeNode:
 
     return max_element
 
+  def calculate_sum(self):
+    total_sum = 0
+
+    if self.right:
+      total_sum += self.right.calculate_sum()
+    if self.left:
+      total_sum += self.left.calculate_sum()
+
+    total_sum += self.data
+
+    return total_sum
+
 # A function which takes a list and builds a tree out of it
 def build_tree(elements):
   root = BinarySearchTreeNode(elements[0])
@@ -112,3 +124,5 @@ if __name__=="__main__":
   print(f"Minimum element in num_tree is: {num_tree.find_min()}")
   # finding maximum
   print(f"Maximum element in num_tree is: {num_tree.find_max()}")
+  # finding total sum
+  print(f"Total sum of elements in BST: {num_tree.calculate_sum()}")
