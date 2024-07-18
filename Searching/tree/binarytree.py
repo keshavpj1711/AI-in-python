@@ -66,7 +66,15 @@ class BinarySearchTreeNode:
       else:
         return False
 
+  def find_min(self):
+    min_element = None
+    if self.left:
+      min_element = self.left.find_min()
+    else:
+      min_element = self.data
 
+    return min_element
+    
 # A function which takes a list and builds a tree out of it
 def build_tree(elements):
   root = BinarySearchTreeNode(elements[0])
@@ -81,8 +89,11 @@ if __name__=="__main__":
   num_tree = build_tree(numbers)
   # If you notice this in_order_traversal basically gives you a sorted list
   # Also if you pass any duplicates in the list it will only add it once 
-  print("In Order Tranversal: ")
-  print(num_tree.in_order_traversal())
+  # print("In Order Tranversal: ")
+  # print(num_tree.in_order_traversal())
 
-  search_input = int(input("Enter a number to search: "))
-  print(num_tree.search(search_input))
+  # search_input = int(input("Enter a number to search: "))
+  # print(num_tree.search(search_input))
+
+  # finding minimum
+  print(f"Minimum element in num_tree is: {num_tree.find_min()}")
