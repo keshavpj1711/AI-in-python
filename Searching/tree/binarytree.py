@@ -48,6 +48,25 @@ class BinarySearchTreeNode:
 
     return elements
 
+  def pre_order_traversal(self):
+    elements = []
+
+    # Logic of pre_order_traversal
+    # base > left > right node is the pattern that is followed with pre order trv
+
+    # visiting base node
+    elements.append(self.data)
+
+    # visiting left node
+    if self.left:
+      elements += self.left.pre_order_traversal()
+    
+    # visiting right node
+    if self.right:
+      elements += self.right.pre_order_traversal()
+
+    return elements
+
   def search(self, val):
     if val == self.data:
       return True
@@ -112,11 +131,19 @@ def build_tree(elements):
 if __name__=="__main__":
   numbers = [17, 4, 1, 20, 9, 23, 18, 34]
   num_tree = build_tree(numbers)
+  
   # If you notice this in_order_traversal basically gives you a sorted list
   # Also if you pass any duplicates in the list it will only add it once 
-  # print("In Order Tranversal: ")
+  print("In Order Tranversal: ")
+  print(num_tree.in_order_traversal())
+
+  print("Pre Order Tranversal: ")
+  print(num_tree.pre_order_traversal())
+
+  # print("Post Order Tranversal: ")
   # print(num_tree.in_order_traversal())
 
+  # Getting search functionalities
   # search_input = int(input("Enter a number to search: "))
   # print(num_tree.search(search_input))
 
